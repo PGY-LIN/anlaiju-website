@@ -33,6 +33,7 @@
       width: 100%;
       height: auto;
       cursor: pointer;
+      border-radius: 12px;
     }
     .caption {
       position: absolute;
@@ -43,7 +44,6 @@
       padding: 0.5rem;
       border-radius: 8px;
     }
-    /* Lightbox overlay */
     .lightbox {
       display: none;
       position: fixed;
@@ -59,6 +59,41 @@
     .lightbox img {
       max-width: 90%;
       max-height: 90%;
+      border-radius: 12px;
+    }
+
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+      header, section, footer {
+        padding: 1rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      h2 {
+        font-size: 1.25rem;
+      }
+      .swiper {
+        width: 95%;
+      }
+      .caption {
+        font-size: 0.85rem;
+        padding: 0.4rem;
+      }
+      footer p {
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.3rem;
+      }
+      h2 {
+        font-size: 1.1rem;
+      }
+      .caption {
+        font-size: 0.75rem;
+      }
     }
   </style>
 </head>
@@ -72,10 +107,10 @@
     <h2>雙人房房型展示</h2>
     <div class="swiper double-room">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/double1.jpg" alt="雙人房1" onclick="openLightbox(this.src)"></div>
-        <div class="swiper-slide"><img src="images/double2.jpg" alt="雙人房2" onclick="openLightbox(this.src)"></div>
-        <div class="swiper-slide"><img src="images/double3.jpg" alt="雙人房3" onclick="openLightbox(this.src)"></div>
-        <div class="swiper-slide"><img src="images/double4.jpg" alt="雙人房4" onclick="openLightbox(this.src)"></div>
+        <div class="swiper-slide"><img src="double1.jpg" alt="雙人房1" onclick="openLightbox(this.src)"></div>
+        <div class="swiper-slide"><img src="double2.jpg" alt="雙人房2" onclick="openLightbox(this.src)"></div>
+        <div class="swiper-slide"><img src="double3.jpg" alt="雙人房3" onclick="openLightbox(this.src)"></div>
+        <div class="swiper-slide"><img src="double4.jpg" alt="雙人房4" onclick="openLightbox(this.src)"></div>
       </div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
@@ -84,9 +119,9 @@
     <h2>四人房房型展示</h2>
     <div class="swiper quad-room">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/quad1.jpg" alt="四人房1" onclick="openLightbox(this.src)"></div>
-        <div class="swiper-slide"><img src="images/quad2.jpg" alt="四人房2" onclick="openLightbox(this.src)"></div>
-        <div class="swiper-slide"><img src="images/quad3.jpg" alt="四人房3" onclick="openLightbox(this.src)"></div>
+        <div class="swiper-slide"><img src="quad1.jpg" alt="四人房1" onclick="openLightbox(this.src)"></div>
+        <div class="swiper-slide"><img src="quad2.jpg" alt="四人房2" onclick="openLightbox(this.src)"></div>
+        <div class="swiper-slide"><img src="quad3.jpg" alt="四人房3" onclick="openLightbox(this.src)"></div>
       </div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
@@ -101,7 +136,7 @@
     <p>地址：澎湖縣馬公市安宅里宅腳嶼27-16號（海龍釣蝦場旁）</p>
     <p>聯絡人：鐘秀秀 0932779408</p>
     <p><a href="https://www.facebook.com/share/1AcgEss4Rv/?mibextid=LQQJ4d" target="_blank">Facebook 粉專</a></p>
-    <p><img src="images/contact_qr.png" alt="聯絡 QR code" width="120"></p>
+    <p><img src="LINE.jpg" alt="聯絡 QR code" width="120"></p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
