@@ -1,135 +1,130 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>安萊居 & 愛來聚海景民宿</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <style>
-    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fff8f0; color: #333; }
-    header { background: #ffe0e6; padding: 2rem; text-align: center; }
-    header h1 { margin: 0; font-size: 2rem; color: #d94f70; }
-    section { padding: 2rem; max-width: 900px; margin: auto; }
-    h2 { color: #d94f70; }
-    .gallery img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 1rem; }
-    .room-section { margin-bottom: 3rem; }
-    .map-embed iframe { width: 100%; height: 300px; border: 0; border-radius: 10px; }
-    .qr { width: 150px; }
-    footer { background: #ffe0e6; padding: 1rem; text-align: center; font-size: 0.9rem; color: #555; }
-    a { color: #d94f70; text-decoration: none; }
-    .room-gallery-container { position: relative; overflow: hidden; }
-    .room-gallery {
-      display: flex;
-      gap: 1rem;
-      transition: transform 0.3s ease-in-out;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fdfdfd;
     }
-    .room-gallery img {
-      width: 250px;
+    header, section, footer {
+      padding: 1.5rem;
+      text-align: center;
+    }
+    h2 {
+      margin-top: 2rem;
+    }
+    .swiper {
+      width: 90%;
+      max-width: 1000px;
+      margin: 2rem auto;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .swiper-slide {
+      position: relative;
+    }
+    .swiper-slide img {
+      width: 100%;
       height: auto;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      flex-shrink: 0;
-    }
-    .nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(255,255,255,0.8);
-      border: none;
-      font-size: 1.5rem;
       cursor: pointer;
-      z-index: 1;
     }
-    .nav-btn.left { left: 0; }
-    .nav-btn.right { right: 0; }
+    .caption {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+    /* Lightbox overlay */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>安萊居 & 愛來聚海景民宿</h1>
-    <p>【安萊居所安心在，愛來聚處幸福開】</p>
-   background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat;
-      height: 60vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-      text-align: center;
+    <p>安萊居所安心在，愛來聚處幸福開</p>
   </header>
 
   <section>
-    <h2>關於我們</h2>
-    <p>「安萊居 & 愛來聚海景民宿」位於澎湖馬公安宅里，擁有無敵海景視野，鄰近市區、機場、碼頭，是放鬆心情與感受澎湖魅力的最佳選擇。每間房型設計溫馨舒適，讓您有如回家般自在。</p>
-  </section>
-
-  <section>
-    <h2>房型介紹</h2>
-
-    <div class="room-section">
-      <h3>雙人房</h3>
-      <p>雙人房型簡約大方，配備電視、小冰箱，獨立衛浴、乾溼分離，皆配有免治馬桶，適合情侶或小家庭。</p>
-      <div class="room-gallery-container">
-        <button class="nav-btn left" onclick="slideGallery('double', -1)">&#9664;</button>
-        <div class="room-gallery" id="double-gallery">
-          <img src="double1.jpg" alt="雙人房1">
-          <img src="double2.jpg" alt="雙人房2">
-          <img src="double3.jpg" alt="雙人房3">
-          <img src="double4.jpg" alt="雙人房4">
-        </div>
-        <button class="nav-btn right" onclick="slideGallery('double', 1)">&#9654;</button>
+    <h2>雙人房房型展示</h2>
+    <div class="swiper double-room">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/double1.jpg" alt="雙人房1" onclick="openLightbox(this.src)"></div>
+        <div class="swiper-slide"><img src="images/double2.jpg" alt="雙人房2" onclick="openLightbox(this.src)"></div>
+        <div class="swiper-slide"><img src="images/double3.jpg" alt="雙人房3" onclick="openLightbox(this.src)"></div>
+        <div class="swiper-slide"><img src="images/double4.jpg" alt="雙人房4" onclick="openLightbox(this.src)"></div>
       </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
 
-    <div class="room-section">
-      <h3>四人房</h3>
-      <p>四人房型溫馨舒適，配有電視、小冰箱，獨立衛浴、乾溼分離，每間皆配有免治馬桶，適合朋友或家庭出遊。</p>
-      <div class="room-gallery-container">
-        <button class="nav-btn left" onclick="slideGallery('quad', -1)">&#9664;</button>
-        <div class="room-gallery" id="quad-gallery">
-          <img src="quad1.jpg" alt="四人房1">
-          <img src="quad2.jpg" alt="四人房2">
-          <img src="quad3.jpg" alt="四人房3">
-        </div>
-        <button class="nav-btn right" onclick="slideGallery('quad', 1)">&#9654;</button>
+    <h2>四人房房型展示</h2>
+    <div class="swiper quad-room">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/quad1.jpg" alt="四人房1" onclick="openLightbox(this.src)"></div>
+        <div class="swiper-slide"><img src="images/quad2.jpg" alt="四人房2" onclick="openLightbox(this.src)"></div>
+        <div class="swiper-slide"><img src="images/quad3.jpg" alt="四人房3" onclick="openLightbox(this.src)"></div>
       </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
   </section>
 
-  <section>
-    <h2>聯絡方式</h2>
-    <p>聯絡人：鐘秀秀<br>電話：0932-779-408</p>
-    <img src="LINE.jpeg" alt="聯絡人 QR Code" class="qr">
-  </section>
-
-  <section>
-    <h2>粉絲專頁</h2>
-    <a class="button" href="https://www.facebook.com/share/1AcgEss4Rv/?mibextid=LQQJ4d" target="_blank">前往 Facebook 粉專</a>
-  </section>
-
-  <section class="map-embed">
-    <h2>我們的位置</h2>
-    <iframe src="https://www.google.com/maps?q=澎湖縣馬公市安宅里宅腳嶼27-16號&output=embed"></iframe>
-    <p>地址：澎湖縣馬公市安宅里宅腳嶼27-16號（海龍釣蝦場旁）</p>
-  </section>
+  <div class="lightbox" id="lightbox" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="" alt="放大圖片">
+  </div>
 
   <footer>
-    &copy; 2025 安萊居 & 愛來聚海景民宿
+    <p>地址：澎湖縣馬公市安宅里宅腳嶼27-16號（海龍釣蝦場旁）</p>
+    <p>聯絡人：鐘秀秀 0932779408</p>
+    <p><a href="https://www.facebook.com/share/1AcgEss4Rv/?mibextid=LQQJ4d" target="_blank">Facebook 粉專</a></p>
+    <p><img src="images/contact_qr.png" alt="聯絡 QR code" width="120"></p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <script>
-    let galleryIndex = { double: 0, quad: 0 };
-
-    function slideGallery(id, direction) {
-      const gallery = document.getElementById(`${id}-gallery`);
-      const cardWidth = gallery.children[0].offsetWidth + 16;
-      galleryIndex[id] += direction;
-
-      if (galleryIndex[id] < 0) galleryIndex[id] = 0;
-      const maxIndex = gallery.children.length - 2;
-      if (galleryIndex[id] > maxIndex) galleryIndex[id] = maxIndex;
-
-      gallery.style.transform = `translateX(-${galleryIndex[id] * cardWidth}px)`;
+    new Swiper('.double-room', {
+      loop: true,
+      navigation: {
+        nextEl: '.double-room .swiper-button-next',
+        prevEl: '.double-room .swiper-button-prev',
+      },
+    });
+    new Swiper('.quad-room', {
+      loop: true,
+      navigation: {
+        nextEl: '.quad-room .swiper-button-next',
+        prevEl: '.quad-room .swiper-button-prev',
+      },
+    });
+    function openLightbox(src) {
+      const box = document.getElementById("lightbox");
+      const img = document.getElementById("lightbox-img");
+      img.src = src;
+      box.style.display = "flex";
     }
   </script>
 </body>
